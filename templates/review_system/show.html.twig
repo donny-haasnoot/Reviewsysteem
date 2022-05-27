@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ReviewSystem{% endblock %}
+
+{% block body %}
+    <h1>Review</h1>
+<!-- De review uit de database halen en weergaven -->
+    <table class="table" >
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ review_system.id }}</td>
+            </tr>
+            <tr>
+                <th>Naam</th>
+                <td>{{ review_system.naam }}</td>
+            </tr>
+            <tr>
+                <th>Sterren</th>
+                <td>{{ review_system.sterren }}</td>
+            </tr>
+            <tr>
+                <th>Beschrijving</th>
+                <td>{{ review_system.Beschrijving }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a button class="btn btn-primary" href="{{ path('app_review_system_index') }}">back to list</a>
+<br>
+    <a style="margin-top: 1%;margin-bottom: 1%" button class="btn btn-primary" href="{{ path('app_review_system_edit', {'id': review_system.id}) }}">edit</a>
+
+    {{ include('review_system/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ReviewSystem index{% endblock %}
+
+{% block body %}
+    <h1>Alle Reviews</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Naam</th>
+                <th>Sterren</th>
+                <th>Beschrijving</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for review_system in review_systems %}
+            <tr>
+                <td>{{ review_system.id }}</td>
+                <td>{{ review_system.Naam }}</td>
+                <td>{{ review_system.Sterren }}</td>
+                <td>{{ review_system.Beschrijving }}</td>
+                <td>
+                    <a button class="btn btn-info" href="{{ path('app_review_system_show', {'id': review_system.id}) }}">show</a>
+                    <a button class="btn btn-danger" href="{{ path('app_review_system_edit', {'id': review_system.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<!-- Button om een nieuwe review aan te maken-->
+    <a button class="btn btn-primary" href="{{ path('app_review_system_new') }}">Create new</a>
+{% endblock %}
